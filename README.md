@@ -1,120 +1,20 @@
-# Модуль Б. (Настройка технических и программных средств информационно-коммуникационных систем)
 
-Время на выполнение модуля 5 часов.  
-Доступ к ISP вы не имеете!!  
+RTR
 
-![image](https://github.com/abdurrah1m/Professionals_09.02.06/assets/148451230/3e4e187a-5fac-4c20-a3a3-ee0f2379b1f8)
 
-| Название устройства | ОС |
-|:-|:-|
-| RTR-HQ | Eltex vESR |
-| RTR-BR | Eltex vESR |
-| SRV-HQ | Альт Сервер 10 |
-| SRV-BR | Альт Сервер 10 (Допустима замена) Debian |
-| CLI-HQ | Альт Рабочая станция 10 |
-| CLI-BR | Альт Рабочая станция 10 (Допустима замена) |
-| SW-HQ | Альт Сервер 10 |
-| SW-BR | Альт Сервер 10 (Допустима замена) |
-| CICD-HQ | Альт Сервер 10 |
-
-### HQ
-
-| Подсеть/VLAN | Префикс | Диапазон | Broadband | Размер |
-|:-|:-|:-|:-|:-|
-| 10.0.10.0 / vlan100 |/27 | 10.0.10.1-30 | 10.0.10.31 | 30 |
-| 10.0.10.32 / vlan200 | /27 | 10.0.10.33-62 | 10.0.10.63 | 30 |
-| 10.0.10.64 / vlan300 | /27 | 10.0.10.65-94 | 10.0.10.95 | 30 |
-
-### BR
-
-| Подсеть/VLAN | Префикс | Диапазон | Broadband | Размер |
-|:-|:-|:-|:-|:-|
-| 10.0.20.0 / vlan100 | /27 | 10.0.20.1-30 | 10.0.20.31 | 30 |
-| 10.0.20.32 / vlan200 | /27 | 10.0.20.33-62 | 10.0.20.63 | 30 |
-| 10.0.20.64 / vlan300 | /27 | 10.0.20.65-94 | 10.0.20.95 | 30 |
-
-| Имя | NIC | IP | Default Gateway |
-|:-:|:-:|:-:|:-:|
-| RTR-HQ | ISP | 11.11.11.2/30 | 11.11.11.1 |
-| | vlan100 | 10.0.10.1/27 | |
-| | vlan200 | 10.0.10.33/27 | |
-| | vlan300 | 10.0.10.65/27 | |
-| RTR-BR | ISP | 22.22.22.2/30 | 22.22.22.1 |
-| | vlan100 | 10.0.20.1/27 | |
-| | vlan200 | 10.0.20.33/27 | |
-| | vlan300 | 10.0.20.65/27 | |
-| SW-HQ | vlan300 | 10.0.10.66/27 |
-| SW-BR | vlan300 | 10.0.20.66/27 |
-| SRV-HQ | vlan100 | 10.0.10.2/27 |
-| SRV-BR | vlan100 | 10.0.20.2/27 |
-| CLI-HQ | vlan200 | 10.0.10.32/27 |
-| CLI-BR | vlan200 | 10.0.20.32/27 |
-| CICD-HQ| vlan200 | 10.0.10.3/27 |
-
-### Внеполосное управление виртуалками в Proxmox
-
-<details>
-  <summary>ТЫКНИ</summary>
-  
-Добавление serial порта в Гипервизоре:
-```
-qm set <VM ID> -serial0 socket
-```
-Хост `/etc/init/ttyS0.conf`:
-```
-# ttyS0 - getty
-start on stopped rc RUNLEVEL=[12345]
-stop on runlevel [!12345]
-respawn
-exec /sbin/getty -L 115200 ttyS0 vt102
-```
-Конфигурация `grub` `/etc/default/grub`:
-```
-GRUB_CMDLINE_LINUX ='console=tty0 console=ttyS0,115200'
-```
-Update:
-```
-update-grub
-```
-Включение serial порта:
-```
-systemctl enable serial-getty@ttyS0.service
-```
-Перезагружаемся и заходим через `xterm.js`. Теперь доступны скроллинг, вставка, копирование и произвольный размер окна.
-
-</details>
-  
-## 1. Базовая настройка
-
-a) Настройте имена устройств согласно топологии  
-&ensp; a.	Используйте полное доменное имя  
-&ensp; b.	Сконфигурируйте адреса устройств на свое усмотрение. Для офиса HQ выделена сеть 10.0.10.0/24, для офиса BR выделена сеть 10.0.20.0/24. Данные сети необходимо разделить на подсети для каждого vlan.  
-&ensp; c.	На SRV-HQ и SRV-BR, создайте пользователя sshuser с паролем P@ssw0rd  
-&ensp; &ensp; 1.	Пользователь sshuser должен иметь возможность запуска утилиты sudo без дополнительной аутентификации.  
-&ensp; &ensp; 2.	Запретите парольную аутентификацию. Аутентификация пользователя sshuser должна происходить только при помощи ключей.  
-&ensp; &ensp; 3.	Измените стандартный ssh порт на 2023.  
-&ensp; &ensp; 4.	На CLI-HQ сконфигурируйте клиент для автоматического подключения к SRV-HQ и SRV-BR под пользователем sshuser. При подключении автоматически должен выбираться корректный порт. Создайте пользователя sshuser на CLI-HQ для обеспечения такого сетевого доступа. 
-
-<details>
-  <summary>ТЫКНИ</summary>
-
-### RTR-HQ
-
-Полное доменное имя:
 ```
 config
-hostname rtr-hq.company.prof
+hostname name
 do commit
 do confirm
 ```
 
-Команды для просмотра интерфейсов:
+
 ```
 sh ip int
 sh int stat
 ```
 
-Настройка ip-адреса (ISP-HQ):
 ```
 interface te1/0/2
 ip address 11.11.11.2/30
@@ -122,22 +22,15 @@ description ISP
 exit
 ```
 
-Параметры DNS:
 ```
 domain name company.prof
 domain name-server 11.11.11.1
 ```
 
-Настройка шлюза:
 ```
 ip route 0.0.0.0/0 11.11.11.1
 ```
 
-Проверка доступа в Интернет:
-
-![image](https://github.com/abdurrah1m/Professionals_2024/assets/148451230/1cb14a1a-3e59-4120-a730-f8746de774f4)
-
-Настройка подынтерфейсов (Router-on-a-stick) vlan100:
 ```
 interface te1/0/3.100
 ip firewall disable
@@ -146,7 +39,6 @@ ip address 10.0.10.1/27
 exit
 ```
 
-vlan200:
 ```
 interface te1/0/3.200
 ip firewall disable
@@ -155,7 +47,6 @@ ip address 10.0.10.33/27
 exit
 ```
 
-vlan300:
 ```
 interface te1/0/3.300
 ip firewall disable
@@ -164,33 +55,17 @@ ip address 10.0.10.65/27
 exit
 ```
 
-Сохранение:
 ```
 do commit
 do confirm
 ```
 
-![image](https://github.com/abdurrah1m/Professionals_2024/assets/148451230/77c60f84-486f-45df-86d8-c10f6c756560)
+Все остальное
 
-![image](https://github.com/abdurrah1m/Professionals_2024/assets/148451230/24fdd024-aa52-4b7a-9c7a-7a0a6d6b6d8e)
-
-### RTR-BR
-То же самое, кроме IP-адреса:
-
-![image](https://github.com/abdurrah1m/Professionals_2024/assets/148451230/5f79ec4d-41a3-4e92-aef8-533cb24e5954)
-
-![image](https://github.com/abdurrah1m/Professionals_2024/assets/148451230/8fcc282b-3736-49a6-8d57-bdd5cec8e770)
-
-![image](https://github.com/abdurrah1m/Professionals_2024/assets/148451230/2f309d19-26dd-41cb-a42f-a79cfed8cbfd)
-
-### SW-HQ | SRV-HQ | CLI-HQ | CICD-HQ | SW-BR | SRV-BR | CLI-BR
-
-Полное доменное имя:
 ```
 hostnamectl set-hostname <VM_NAME>.company.prof;exec bash
 ```
 
-Настройка интерфейсов:
 ```
 sed -i 's/DISABLED=yes/DISABLED=no/g' /etc/net/ifaces/ens18/options
 sed -i 's/NM_CONTROLLED=yes/NM_CONTROLLED=no/g' /etc/net/ifaces/ens18/options
@@ -200,9 +75,6 @@ systemctl restart network
 ping -c 4 8.8.8.8
 ```
 
-### SRV-HQ | SRV-BR
-
-Создание пользователя sshuser:
 ```
 adduser sshuser
 passwd sshuser
@@ -213,9 +85,7 @@ usermod -aG wheel sshuser
 sudo -i
 ```
 
-### SSH
 
-На серверах, к которым подключаемся:
 ```
 mkdir /home/sshuser
 ```
@@ -241,7 +111,6 @@ chmod 600 .ssh/authorized_keys
 chown sshuser:sshuser .ssh/authorized_keys
 ```
 
-На машине с которого подключаемся к серверам:
 ```
 ssh-keygen -t rsa -b 2048 -f srv_ssh_key
 ```
@@ -251,7 +120,6 @@ mkdir .ssh
 ```
 mv srv_ssh_key* .ssh/
 ```
-Конфиг для автоматического подключения `.ssh/config`:
 ```
 Host srv-hq
         HostName 10.0.10.2
@@ -267,14 +135,14 @@ Host srv-br
 ```
 chmod 600 .ssh/config
 ```
-Копирование ключа на удаленный сервер:
+
 ```
 ssh-copy-id -i .ssh/srv_ssh_key.pub sshuser@10.0.10.2
 ```
 ```
 ssh-copy-id -i .ssh/srv_ssh_key.pub sshuser@10.0.20.2
 ```
-На сервере `/etc/ssh/sshd_config`:
+`/etc/ssh/sshd_config`:
 ```
 AllowUsers sshuser
 PermitRootLogin no
@@ -285,10 +153,6 @@ Port 2023
 ```
 ```
 systemctl restart sshd
-```
-Подключение:
-```
-ssh srv-hq
 ```
 
 </details>
