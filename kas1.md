@@ -312,7 +312,186 @@ systemctl restart sshd
 ```
 
 </details>
+interface fastethernet17
+ loopback-detection enable 
+ description PPPoE-17755
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet18
+ loopback-detection enable 
+ description PPPoE-17869
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet19
+ loopback-detection enable 
+ description FREE
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet20
+ loopback-detection enable 
+ description PPPoE-17838
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet21
+ loopback-detection enable 
+ description FREE
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet22
+ loopback-detection enable 
+ description FREE
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet23
+ loopback-detection enable 
+ description FREE
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet24
+ loopback-detection enable 
+ description FREE
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface gigabitethernet1
+ description 
+ ip arp inspection trust 
+ ip dhcp snooping trust 
+ bridge multicast unregistered filtering 
+ switchport trunk allowed vlan add 445,446,600,612-613 
+!
+interface gigabitethernet2
+ description PPPoE-15864
+ ip arp inspection trust 
+ ip dhcp snooping trust 
+ bridge multicast unregistered filtering 
+ switchport trunk allowed vlan add 445,446,600,612-613 
+!
+interface gigabitethernet3
+ description 
+ ip arp inspection trust 
+ ip dhcp snooping trust 
+ bridge multicast unregistered filtering 
+ switchport trunk allowed vlan add 445,446
+!
+interface gigabitethernet4
+ description ""
+ ip arp inspection trust 
+ ip dhcp snooping trust 
+ bridge multicast unregistered filtering 
+ switchport trunk allowed vlan add 445,446
+!
+exit
+ip igmp snooping vlan 3482 immediate-leave 
+ip dhcp snooping 
+ip dhcp snooping vlan 446 
+ip default-gateway 10.5.194.193 
+encrypted ip ssh-client key rsa key-pair
+---- BEGIN SSH2 ENCRYPTED PRIVATE KEY ----
+Comment: RSA Private Key
+D6wAjEzztTS8NtPbBgNVxmHRj3USqup3xzTJSWRBKNbm6FaFwZx83LrGktJ0Gn+KakKBWY
+FX0Ea4i0oDdhiUet90nevsczgVPWRbdOBdgcLSBbjfEPOpMt5vyoL3/xbdIqpWnSAPxiiy
+CW7pIlU1v3CDC9stjLcJdrmxhErk7d6nhOSnqzzpKSXwbaePNC5byb4i/amTSzbBeryqwV
+SWvhdWM6G1qLw2/s0xEBVMcLk4UK2mKwcyi/YkN3KvDEUw8QdQAs5fFFL6/aXNH3Fl6kNn
+qZbjSik2ssBNiBAK4J+aHF8nH+jx8B9UB8pqqSwfDGjtuAolFOyCLW7JDD6E7gtmfvHAzL
+ebSUioS96fMVDNF3ykFLfRtFiwK7xhf+WdeNisTSJBUtWAyOHCnU94ldOSBRswLYyl8yzm
+7DnI4YAi1sXAbfKDsGsf1Ch/+mnCPG+eDZTK548/62IA4Wx1HHdx48msc4hSOhJAtIc5K2
+zRC8F32ick8fVmgUkSP4wgTW3znG7vwZtU3KfEG9JioYmnkfqm9PAQGo8ymR/Il2uzsfj2
+oE0+5XDPaGwm+UtJsK8FT18/D8tm3bG324av8C05z0Hd9nvMd73FrDESok/bIOKYLX99a9
+i9rs0RGi/mo8hSUInBwPiNJJd+J6DdKrcr8XHRruYDyJxCi650Cb2M2k+V+/Dw1uUDv1YH
+mIPjXy2CvO7jxyI3uYsJUWGUDjIEdomFjMm66ISvaxk7Qaj0agQQ7Yx8Hxp+J+21paB2K/
+SOOoujot6taV+H3Ws/hHaKhtmz93DEu2/ouSUPvx5OoKmaaycTPtoOm9XoseX13BKLf3zy
+hI+OFi2A6XmciYIm3SBBOG8qJy4vfiTZ1rI9lqwCYHgutv5Xy0S9A7nDN+avagdHDIOdWt
+ifcRiYKs7JCgcrT7d6Tfb18V5H4S59bDvjCE1IcNuAgHr1X4hPy+gzS0o6lj1LZIpnd2qA
+8uSYo9IXMfR4yElcnRtE5GOw2h4eEJvRh5QZs0dVDeAl/WwNfW7VXm4EMnUP/3CtN0/PK8
+ZohOTmNsZr5AdOF3ZID01diDT/2JEoMLsvir1Tf6Py3rsf1eG45cvLUjhOyQ==
+---- END SSH2 PRIVATE KEY ----
 
+---- BEGIN SSH2 PUBLIC KEY ----
+Comment: RSA Public Key
+AAAAB3NzaC1yc2EAAAADAQABAAAAgQCeXwIbXofpAfqMScuxOMquGx1dPXcckIbi7SWWyw
+7FUjUKg88glJF2GQcXTZhanjwHonD0ZVZDth+505i2fvLGROWMu3Kf9tnff4M88ki78qDl
+cRIX5dp31AdeXdCKNMuBOtF5PaDRVpWyTQgvRpBdmoz8w+93oNKpRpGcq8mYPQ==
+---- END SSH2 PUBLIC KEY ----
+.
+encrypted ip ssh-client key dsa key-pair
+---- BEGIN SSH2 ENCRYPTED PRIVATE KEY ----
+Comment: DSA Private Key
+AQolxJryr+dbMbws7JbZA71uIenDeuzKSTlf6os/Z//mJ6eAOwmY0pCUTk2YGUqkK5LbR0
+oPj6BkRxvm29fsGxysMc9yn6fyApacteDS7TswAShd/lYrDWkOX3cPiBrbX60d/mAerX4S
+uZ/9S4XC6niPlNpZrCnuJrML+HLvItLY3GihfkYzn3NmWN9gzJIZ4dx4/xiG4862In6PnN
+I7x+BgqmFQXlLHakeZwh2ybbPrc9d3lQtX6O+CWsFyLAS+T1cr5kCrC14fv2rM1tGMBuPz
+KS64FeZ2F47aMyXC6WyntC7KTYUwbpP9uo0ib49HW6oi3ES9xcMbZvBwkIWxfOW1/nghNi
+EB1hoxrG9ucCCH+jiESVBHqx2b6rTzrIFJ5yDhjRspe/QTm+jGsOxkxo7V2yX3UuZxdq1q
+qhRNBx10xUtzvepzWaKSKP9zUzRJELpEUGcG51xsKcpugQOC9B7WRSAjE14kZgvYuz7r/U
+Z5m4wu/ODPInH6fA8ojLEx+Gsp1b+LL2Ufq8qa/E/NFN0nJuNafmmTIbCE5exAdcP/82oK
+r52r7j/bbArRsU3txDVDvRjA0tW/rFn6HlNu2w1sCdyg3+hOdVcF4Dd1ZA/prcs7srHIbN
+xD2UMW4OQhxi1EGPAYW0gbl6jhMnkkU62zvGoabiqgxiga+giVigBIgzPBczYMO+HiaORv
+ETmS3A/IGcXZlTiyKQnLXzy4Qvy7C+vu4rVSGMgTNtlDoVm0K7DmwkP89pyCYabOp/NvnK
+OuThxsV7o7naSw9eY8AJC6vL2iPqo0IdmTGOGNYRR+1siDCS61YqCQOriSy6Ws
 <details>
   <summary>nwxt</summary>
 ## 7.	Настройка DNS для SRV-HQ и SRV-BR
@@ -719,48 +898,90 @@ sh ip route
 
 </details>
 
-## 10.	[->](./10.md) На сервере SRV-HQ сконфигурируйте основной доменный контроллер на базе FreeIPA
-
-a)	Создайте 30 пользователей user1-user30.  
-b)	Пользователи user1-user10 должны входить в состав группы group1.  
-c)	Пользователи user11-user20 должны входить в состав группы group2.  
-d)	Пользователи user21-user30 должны входить в состав группы group3.  
-e)	Разрешите аутентификацию с использованием доменных учетных данных на ВМ CLI-HQ.  
-f)	Установите сертификат центра сертификации FreeIPA в качестве доверенного на обоих клиентских ПК.  
-
-<details>
-  <summary>ТЫКНИ</summary>
-
-[->](./10.md)
-
 </details>
+I+HKlHVzJc2FPTCsV3s+7uQXXhBoEBO2aEC9gRtJQymgrkc/AU5ZQ16DHOuEIbmLMHD
+o15wbYxldiZHy8eDAfucFwpYqr8LihD0Hwg670J5TZU01wv5ZhFOpG6ESEFfIDWHIagJyw
+cpXYH+JTKM1rlPujEE8pl9M3CRMSOHP3TjUkwbiUIuo7v/DXqHl2XF9TPvCIDfLAmYfl++
+F3/ZWj+zT0LHGJtmeOZm/t2vuijNFPh3tpyuitnP1zfasrKTA3PUR9NToNsT+pRjxQAfKd
+F5u0Uf0SQfazWsSJBIbjQIFb0GAJy6D4JvxxzRA638nMtp01zdrZhPOMi7U9Om3HcR1p8E
+C3OR94zSjq+aTUx7fhiNyfhE4melB62IJHwgL+IOQU3WgvezOSqDFtvEg7mYc4SzskOnfj
+4PU3pwOpU6KFYj2zZO78ognbsdolU1xfCN6UJAGbKFujCdWXGQRYNDUAQGag==
+---- END SSH2 PRIVATE KEY ----
 
-# 11.	На SRV-BR сконфигурируйте proxy-сервер со следующими параметрами
+---- BEGIN SSH2 PUBLIC KEY ----
+Comment: RSA Public Key
+AAAAB3NzaC1yc2EAAAADAQABAAAAgQDPHTB+ro8Uj9phX6K2lbeymR6WMJkIsqLvxbBGAX
+jbH5+cSTaB2fy6lqgpsrLBxDcWEksNrZIUMbtbKq2WXk4rtZUJvG5lGhWjzAfKvx+dCdNU
+Yw2UTtHz4DhPmXQZ7sUunsAltBWGiKUmXiY7WBJMUvzspjNdv5UgPHFJacjIXQ==
+---- END SSH2 PUBLIC KEY ----
+.
+encrypted crypto key import dsa
+---- BEGIN SSH2 ENCRYPTED PRIVATE KEY ----
+Comment: DSA Private Key
+A/rauF5w297xMVuC4c5v3snsBd8Hju/SOBcB46oHSOYC7SsDAZXmju6RSKnL4W/xO0HuVz
+chJdmak87dIQtobp3iD9dnpvG+707SW+NtiTCLH+0dS+IF5FjsEMA+uIOxziIBC7ouo4M+
+XKDBpsIse0qq1Dfxk8W757XQtSEiRcsESaNpW7/k076jvuPkUL5zUknpRI1WDHf0CO8egC
+P2zUu+KPdSrHKBMnMI3EAnhYGBZhmIF3phrxkUfd03YLIS/qchGDpXkGrZ6rSixjYs9OH0
+WjxcGGyQsgCqc6oXms9i8+qMr04K00AO+Kn62BXlq021nAB8Sv078gicS3HizBkSNhyEPA
+GKzhfpt7fhG2/wNjtoogY4SdmALuXb0CwEWC+Bv3D1KOCEbJzAsecfs+Ry1djoXB7zfOSG
+3cXasa68UQRu+FO3qZnfI2Xp/iYkzU3j6f3MGLBA66u4iEWARCXM8Cn2iVy1/ILvuw8qEn
+Vt5uFLKOgOM1uh+nLA0ailHtnDfJR6A4Nnbj9nVW1nrYuEaGe9SXHINLQBl7AJGmtDWnZ4
+HDJVxtMnOT6Gu/Usd0LG5CWBh7cIA0ULDar2jxG60zkbxRiuKNLJB0LFeTd122Dlw5a2sv
+YlcT5o8LGsNG3GBFh9aBJivaeKpAgEUnU43R+IsADDwJCr7nPrm7LMKndG58nUrZ6l+v51
+5E37vdmbEvNN1ptlVVd2flPeZBnNaPao2RASVeBQWSvmNxRT8UEOPBLu57SBEDgurcR+GQ
+j6IcuTGJoi36Fu1YaS+MWqRn9k3wZKNTBDbGnC7W3X96ziIB1tfvQ+d8HGW+P9
+---- END SSH2 PRIVATE KEY ----
 
-a)	Пользователям group1 разрешен доступ на любые сервисы предприятия  
-b)	Пользователям group2 разрешен доступ только к системе мониторинга  
-c)	Пользователям group3 не разрешен доступ никуда, также, как и пользователям, не прошедшим аутентификацию  
-d)	Любым пользователям компьютера CLI-HQ разрешен доступ в сеть Интернет и на все сервисы предприятия, кроме доменов vk.com, mail.yandex.ru и worldskills.org  
-e)	Настройте клиент правого офиса на использование прокси сервера предприятия  
-f)	Авторизация для proxy спрашивается браузером, SSO не ожидается  
+---- BEGIN SSH2 PUBLIC KEY ----
+Comment: DSA Public Key
+AAAAB3NzaC1kc3MAAACBALrBVQncH0ItzZ2iJ5qqHFV7L9gRtREBpmufRcQTT+ybRicoYD
+Hx08iQ7nJQbeiIYJ+aajtqSz7s2cx0VM/w7cZ4m58HkkQeaCAT9adSebpCGTvTDvXBbUau
+pBnjFrAibn9e1JhWiC5fR/Zj+MOrffeqslDbsL/sPgruK3EXJr8zAAAAFQC+vtbLwhVtgQ
+zd8eLjFnbvUgeSFQAAAIAwt0+mrl3rKnYkjADO7z7+lkAhG/LT1WN0QI7pNLjE6Y4wQc9s
+FHgW+reUUMImLsXYOoHe2m26dwo/BTGWETs3nc4B6yldB1vp23Q8rr49+2JvvNzeGGoOb0
+lCAhf0/lfox3wFtVBg8nHYhfdvHCzmmJdLW/k6dedZ6dGcjS93EAAAAIBOiFiAji5mL/uq
+dapdfHplnYxaj+hfp8XeMgDRhn1MAKmvh2J6uGlmMfCk7GWf5nphAV7qnqAwffJaX8Yf8T
+RyrcqZGGBRgVl7/2W2gCn4cLOhoWkSoeW9GL1qfbzG0DyfP75ELqdAfGoyTDS7UunZoIxD
+tHbmOV5QUkmsDVDbTw==
+---- END SSH2 PUBLIC KEY ----
+.
+encrypted crypto certificate 1 import
+-----BEGIN RSA ENCRYPTED PRIVATE KEY-----
+hB7dGIjz6W+dppJqNSV1o+9c0/Gre95e6JpfauH8ySdP70sLaYOIdXInCL1EdiZ3Nbqe8Z
+IQIiWD/5wk5Fi2p87mzx1MP+B+xHiyTHL0Rlwh6fmqEhNYa4YmgDDXeY2rew8AmWoFD7C1
+sumg0VeiIQ9bteyWLtB2vdmQ6FSZT7L3swgAy40eVZsHYLIewGjf7tX3B2a62PqswZTPIw
+fOwSgL08GdO9bATFnq1qx6pJYkGjJA+6dd6KZMs66XY6Fvb4JET9y5/JLBLRESgBvxWjpC
+3XCERvb0oJ6PtWMAciYDtGTneX0pK+JJsp/BtT4Xyqp0QYuyRRB6bAMpk0pa7gla139k/k
+womHfIqboNVFjnba5wGQUhaVIh9mm2NzlNiNmENa6ue7feF6usctld+lq7SqofK4amDME5
++DHNXW2SCdj/3+XhevYFeypbcCAsWgysBU7Ua2p5Ac+KYuHydoCZBFQzkY1rNtryNdMMKe
+7fc3uL+DABiRoth1PNRPLFREMrEPt5feQpiDMhc0zsmvcOKsnMcXESWq+vxS4NKsQs3SGf
+ZFJKqhty4e4llylsaOp8sUfsB4GDNUCZY0Tke2eEaG1ynbJK+FKwr52mSI8WaXCP7g+HPQ
+bOHJe08fV6RCMey2d+DbN4L+Rnpmcr4Ns6lmloPWGv4cBx6CYVhfDmq6RGcsq71FjlDDDn
+GorUqcyHKF3m1D6PnYVf/vrX70JZFnW9PZgdn5M4QDJSgynuYcae3vP95hXUBOiSJ2xnor
+8GrXXckN3xWgIG2fHh66rDA6xKBFKvwDBDDvInnv/cLcEnKrT9udmEvhmSnx64mgyvidbg
+5DOPbyfbz4oJ++49Hmmfo7UHEllzdlhL0y/qq0z2cQQ+qQKYWWODzIdoUQ3Bu1Qj/KSrir
+n8jWcOO7GTitYxNfss6CV8+KOC813KkEm6eR643SEuALlhCpNh2wmSwGJ/Y5mdlpkBEl5i
+VTrHfUlXwFhZUjRBllSya/XvCtR+MZHKjmAzhFm9ja2JK9E0+VMIyqA4nBoxCMzPUyojL+
+/zlftJAU/+8nzUXHVgZ0qc2b5UJvHO+c65SJNi6oeehdqvJ5zxuKPM23dwAQ==
+-----END RSA PRIVATE KEY-----
 
-| Запись | Тип записи |
-|:-|:-|
-|rtr-hq.company.prof|A|
-|rtr-br.company.prof|A|
-|sw-hq.company.prof|A|
-|sw-br.company.prof|A|
-|srv-hq.company.prof|A|
-|srv-br.company.prof|A|
-|cli-hq.company.prof|A|
-|cli-br.company.prof|A|
-|dbms.company.prof|CNAME|
-
-<details>
-  <summary>ТЫКНИ</summary>
-
-Пока что нет
-
-</details>
-
-</details>
+-----BEGIN RSA PUBLIC KEY-----
+MIGJAoGBAORC9H9GeKASUYrTU/fguACojEjpRA7fcX5N07Vp4scjiOgyewintrgb4Hie6I
+DspqlIPZ3GdKtp1ae+yRqN6HtoHR6ekIe+CLgzZjvT/NFMqGiFFbvrVGpiUZomgDbUP+4U
+R5ccN1i1uVt7rFBARFz7qTEuie1O+Bo00B7QpqgNAgMBAAE=
+-----END RSA PUBLIC KEY-----
+-----BEGIN CERTIFICATE-----
+MIICIjCCAYsCEHQDXV4ghGAmn1Z1NOjWFQQwDQYJKoZIhvcNAQEFBQAwUjELMAkG
+A1UEBhMCICAxCjAIBgNVBAgTASAxCjAIBgNVBAcTASAxEzARBgNVBAMTCjEwLjUu
+MTMwLjIxCjAIBgNVBAoTASAxCjAIBgNVBAsTASAwHhcNMTQwODA2MTY1NjQzWhcN
+MTUwODA2MTY1NjQzWjBSMQswCQYDVQQGEwIgIDEKMAgGA1UECBMBIDEKMAgGA1UE
+BxMBIDETMBEGA1UEAxMKMTAuNS4xMzAuMjEKMAgGA1UEChMBIDEKMAgGA1UECxMB
+IDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA5EL0f0Z4oBJRitNT9+C4AKiM
+SOlEDt9xfk3TtWnixyOI6DJ7CKe2uBvgeJ7ogOymqUg9ncZ0q2nVp77JGo3oe2gd
+Hp6Qh74IuDNmO9P80UyoaIUVu+tUamJRmiaANtQ/7hRHlxw3WLW5W3usUEBEXPup
+MS6J7U74GjTQHtCmqA0CAwEAATANBgkqhkiG9w0BAQUFAAOBgQDeLfUUNR8pCdXK
+33Ka7pRXszTLvHccFchBlyHbeIVjgmp0Q2G0oiuv6vCheQ0KFi4GHMXOnrqm3KR4
+HJb1ANAZ4H+1NgZQJruQ/GoWPH5+xt3uSsZnY8s9JzjAz5VFcXoMyJPz8i9Vuas/
+btotEOVRWQucyeOWJdd6EMUZI17tSw==
+-----END CERTIFICATE-----
+.
