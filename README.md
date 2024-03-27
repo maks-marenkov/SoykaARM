@@ -1,5 +1,161 @@
+hostname VST26-SF30024-1
+enable password level 15 encrypted ea75da09d8596d4e2314861686fd33903c59020e
+passwords aging 0 
+username ctadmin password encrypted ea75da09d8596d4e2314861686fd33903c59020e privilege 15 
+ip ssh server
+snmp-server server
+snmp-server location "Armavir, Efremova, 162 [44.99686,41.10866]"
+snmp-server contact noc@city-telekom.ru
+snmp-server community public ro 10.5.0.11 view Default 
+snmp-server community t0LmsCrRxU ro 10.5.0.9 view Default 
+snmp-server host 10.5.0.11 traps version 2c public 
+clock timezone MSK +3
+sntp anycast client enable both 
+sntp broadcast client enable both 
+clock source sntp
+sntp unicast client enable
+sntp unicast client poll
+sntp server 10.5.0.4 poll 
+sntp server 10.5.0.29 poll 
+ip telnet server
+!
+interface vlan 445
+ name CUST 
+ ip dhcp relay enable 
+!
+interface vlan 446
+ name MGNT 
+ ip address 10.5.194.212 255.255.255.224 
+!
 
-RTR
+!
+interface fastethernet1
+ loopback-detection enable 
+ description PPPoE-441
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet2
+ loopback-detection enable 
+ description PPPoE-19174
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet3
+ loopback-detection enable 
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet4
+ loopback-detection enable 
+ description PPPoE-18251
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet5
+ loopback-detection enable 
+ description 56875-kv36
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet6
+ loopback-detection enable 
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet7
+ loopback-detection enable 
+ description PPPoE-842
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet8
+ loopback-detection enable 
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet9
+ loopback-detection enable 
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+!
+interface fastethernet10
+ loopback-detection enable 
+ bridge multicast unregistered filtering 
+ storm-control broadcast enable 
+ storm-control broadcast level kbps 70 
+ storm-control include-multicast 
+ spanning-tree disable 
+ spanning-tree guard root 
+ switchport mode access 
+ switchport access vlan 481 
+ no cdp enable 
+<details>
+  <summary>RTR</summary>
+
 
 
 ```
