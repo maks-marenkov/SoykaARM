@@ -14,15 +14,14 @@ voice vlan oui-table add 0001e3 Siemens_AG_phone________
 voice vlan oui-table add 00036b Cisco_phone_____________
 voice vlan oui-table add 00096e <details>
   <summary>Avaya___________________</summary>
+
+
 ```
-`ip link add link ens18 name ens18.300 type vlan id 300`
+ip link add link ens18 name ens18.300 type vlan id 300
 ip link set dev ens18.300 up
 ip addr add 10.0.10.66/27 dev ens18.300
 ip route add 0.0.0.0/0 via 10.0.10.65
 echo nameserver 8.8.8.8 > /etc/resolv.conf
-```
-
-```
 apt-get update && apt-get install -y openvswitch
 ```
 
@@ -97,7 +96,7 @@ ovs-vsctl set port ens21 tag=200
 
 ```
 modprobe 8021q
-``
+```
 </details>
 
 voice vlan oui-table add 000fe2 H3C_Aolynk______________
