@@ -28,8 +28,7 @@ nano wiki.yml
 ```
 Перезапустить контейнер
 ```
-docker-compose -f wiki.yml down
-docker-compose -f wiki.yml up -d
+docker-compose -f wiki.yml restart
 ```
 
 После необходимо найти ключ в LocalSettings.php и вставить на сайте
