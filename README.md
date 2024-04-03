@@ -29,4 +29,13 @@ nano wiki.yml
 Перезапустить контейнер
 ```
 docker-compose -f wiki.yml down
+docker-compose -f wiki.yml up -d
 ```
+
+После необходимо найти ключ в LocalSettings.php и вставить на сайте
+```
+grep wgUpgradeKey LocalSettings.php
+```
+
+WikiMedia запущенна и работает!
+
