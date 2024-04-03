@@ -16,3 +16,13 @@ cf996875fd07   mariadb     "docker-entrypoint.s…"   28 minutes ago   Up 28 min
 docker exec -it cf996875fd07 /bin/bash
 hostname -i
 ```
+
+Зайти на сайт MediaWiki 192.168.1.1:8080. Начнется установка. Указать все данные доступа. В строку сервер базы данных записать IP результат команды hostname -i. После чего скачается файл LocalSettings.php. Необходимо загрузить файл на сервер. 
+
+```
+nano wiki.yml
+```
+Убрать комментарий на строчке 
+```
+ - ./LocalSettings.php:/var/www/html/LocalSettings.php
+```
