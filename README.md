@@ -24,5 +24,9 @@ nano wiki.yml
 ```
 Убрать комментарий на строчке 
 ```
- - ./LocalSettings.php:/var/www/html/LocalSettings.php
+# - ./LocalSettings.php:/var/www/html/LocalSettings.php
+```
+Перезапустить контейнер
+```
+docker-compose -f wiki.yml down
 ```
